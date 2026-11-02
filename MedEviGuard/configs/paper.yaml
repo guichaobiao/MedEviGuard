@@ -1,0 +1,113 @@
+model:
+  backbone_directory: null
+  backbone_layers: null
+  backbone_dtype: null
+  input_size: 512
+  channels: null
+  convolution_kernel: null
+  normalization_groups: null
+  normalization_epsilon: null
+  stem_stride: null
+  stage_stride: null
+  evidence_channels: null
+  global_hidden_channels: null
+  teacher_channels: null
+  pool_ratios: null
+  spectral:
+    kernel_size: null
+    frequencies: null
+    stride: null
+    padding: null
+    downsample_factor: null
+    log_scale: null
+  relation:
+    grid_size: null
+    neighbors: null
+    temperature: null
+  refinement:
+    channels: null
+    embedding_channels: null
+    stride: null
+    residual_epsilon: null
+    clip_value: null
+loss:
+  weights:
+    dense: null
+    auxiliary: null
+    image: null
+    local: null
+    original_negative: null
+    regional_margin: null
+    teacher: null
+    distillation: null
+    real_pathology: null
+    small_region: null
+    paired_features: null
+    agreement: null
+    appearance: null
+  tversky_false_positive: null
+  tversky_false_negative: null
+  smoothing: null
+  regional_margin: null
+  feature_margin: null
+  outside_weight: null
+  appearance_image_weight: null
+  teacher_warmup_epochs: null
+  small_region_area: 0.01
+training:
+  epochs: 60
+  batch_size: 2
+  accumulation_steps: 4
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_epochs: 3
+  adam_betas: null
+  adam_epsilon: null
+  minimum_lr_ratio: null
+  gradient_clip: null
+  seed: null
+  mixed_precision: true
+  amp_dtype: null
+  appearance_interval: null
+  num_workers: null
+  log_interval: null
+data:
+  root: null
+  train_manifest: null
+  validation_manifest: null
+  heldout_generators:
+    full_image:
+      - SD1.5
+      - LCM
+      - SDXL
+      - PixArt
+      - StyleGAN
+    local_edit:
+      - BLD
+      - BrushNet
+      - SDXL Inpainting
+  task_probabilities:
+    real: 0.50
+    local_edit: 0.35
+    full_image: 0.15
+  area_bins: null
+  augmentation:
+    horizontal_flip_probability: null
+    processing_probability: null
+    intensity_range: null
+    resampling_range: null
+    jpeg_probability: null
+    jpeg_quality_range: null
+    small_edit_probability: null
+    small_edit_area_range: null
+    maximum_shrink_scale: null
+    minimum_residual: null
+validation:
+  image_threshold: null
+  mask_threshold: null
+  selection_weights:
+    full_image_auc: null
+    local_edit_auc: null
+    macro_dice: null
+    worst_group_dice: null
+    small_region_dice: null
